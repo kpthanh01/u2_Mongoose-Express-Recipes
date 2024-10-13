@@ -2,9 +2,9 @@ const { Schema } = require('mongoose')
 
 const Type = new Schema(
   {
-    origin: {type: String, required: true},
-    catagory: {type: String, required: true},
-  }
+    cuisine: { type: String, required: true },
+  },
+  { timestamps: true }
 )
 
 module.exports = Type

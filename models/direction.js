@@ -2,7 +2,7 @@ const { Schema } = require('mongoose')
 
 const Direction = new Schema(
   {
-    description: {type: [String], required: true},
+    direction: {type: [String], required: true},
     recipe_id: {type: Schema.Types.ObjectId, required: true}
   }
 )
