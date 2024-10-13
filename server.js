@@ -34,7 +34,7 @@ app.post('/courses', courseController.createCourse)
 app.put('/courses/:id', courseController.updateCourse)
 app.delete('/courses/:id', courseController.deleteCourse)
 
-app.get('/recipes', recipeController.getAllRecipes)
+app.get('/recipes', recipeController.getRecipes)
 app.get('/recipes/:id', recipeController.getRecipeById)
 app.post('/recipes', recipeController.createRecipe)
 app.put('/recipes/:id', recipeController.updateRecipe)

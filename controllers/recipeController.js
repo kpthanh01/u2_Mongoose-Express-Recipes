@@ -1,9 +1,15 @@
 const { Recipe } = require('../models')
 
-const getAllRecipes = async (req, res) => {
+const getRecipes = async (req, res) => {
   try {
-    let recipes = await Recipe.find({})
-    res.json(recipes)
+    let recipe
+    let { servings } = req.query
+    if (servings) {
+      recipe = await Recipe.find({ servings: `${servings}` })
+    } else {
+      recipe = await Recipe.find({})
+    }
+    res.json(recipe)
   } catch (error) {
     return res.status(500).send(error.message)
   }
@@ -54,7 +60,7 @@ const deleteRecipe = async (req, res) => {
   try {
     let { id } = req.params
     let deleted = await Recipe.findByIdAndDelete(id)
-    if(deleted){
+    if (deleted) {
       return res.status(200).send('Recipe deleted')
     }
     throw new Error('Recipe not Found')
@@ -64,7 +70,7 @@ const deleteRecipe = async (req, res) => {
 }
 
 module.exports = {
-  getAllRecipes,
+  getRecipes,
   getRecipeById,
   createRecipe,
   updateRecipe,
